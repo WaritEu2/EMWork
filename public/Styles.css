@@ -9,11 +9,13 @@ h1 {
     text-align: center;
     color: #333;
 }
-้h2{
+
+้h2 {
     text-align: center;
     color: #0e0772;
 }
-h3{
+
+h3 {
     text-align: right;
     color: #e43c3c;
 }
@@ -64,7 +66,8 @@ table {
     margin-top: 20px;
 }
 
-th, td {
+th,
+td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ccc;
@@ -78,6 +81,7 @@ th {
 tr:hover {
     background-color: #73b4e9;
 }
+
 select {
     width: 250px;
     padding: 10px;
@@ -91,4 +95,85 @@ select:hover {
     background-color: #f0f0f0;
     border-color: #888;
 
+}
+
+input[type="date"],
+[type="month"] {
+    /* ขนาดและระยะ */
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+
+    /* ฟอนต์และสี */
+    font-size: 16px;
+    color: #333;
+    /* สีข้อความ */
+    background-color: #f0f0f0;
+    /* สีพื้นหลัง */
+
+    /* ขอบ */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    /* ข้อความข้างในเมื่อยังไม่ได้เลือก */
+    ::-webkit-datetime-edit {
+        color: #666;
+        /* เปลี่ยนสีข้อความภายใน */
+    }
+
+    /* เอาไอคอนลูกศรออก (เฉพาะบางเบราว์เซอร์) */
+    ::-webkit-calendar-picker-indicator {
+        background: none;
+        display: none;
+    }
+
+    /* เพิ่มการเคลื่อนไหวเมื่อคลิก */
+    transition: all 0.3s ease;
+}
+
+input[type="date"]:focus {
+    border-color: #4CAF50;
+    /* เปลี่ยนสีขอบเมื่อคลิก */
+    outline: none;
+    /* เอาเส้นขอบของเบราว์เซอร์ออก */
+}
+
+#popup {
+    text-align: center;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 400px;
+}
+
+/* สไตล์สำหรับ Overlay */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 500;
+}
+.button-container {
+    display: flex; /* ใช้ Flexbox */
+    justify-content: space-between; /* จัดให้ปุ่มอยู่ห่างกัน */
+    margin-top: 10px; /* เพิ่มระยะห่างด้านบนถ้าจำเป็น */
+}
+
+button {
+    margin-right: 10px; /* ระยะห่างระหว่างปุ่ม (ถ้าจำเป็น) */
+}
+.statusWorksDropdown{
+    text-align: center;
 }
