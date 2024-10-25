@@ -62,43 +62,49 @@ function loadTable() {
             const table = document.getElementById('PersonTable');
             table.innerHTML =
                 `<tr>
-                            <th>ID</th>
-                            <th>ชื่อ</th>
-                            <th>นามสกุล</th>
-                            <th>ตำแหน่ง</th>
-                            <th>เบอร์โทรศัพท์</th>
-                            <th>ประเภทการลา</th>
-                            <th>สาเหตุการลา</th>
-                            <th>วันเริ่มต้น</th>
-                            <th>วันสิ้นสุด</th>
-                            <th>สถานะ</th>
-                            <th>แก้ไข</th>
-                        </tr>`;
+                    <th>ID</th>
+                    <th>ชื่อ</th>
+                    <th>นามสกุล</th>
+                    <th>ตำแหน่ง</th>
+                    <th>เบอร์โทรศัพท์</th>
+                    <th>ประเภทการลา</th>
+                    <th>สาเหตุการลา</th>
+                    <th>วันเริ่มต้น</th>
+                    <th>วันสิ้นสุด</th>
+                    <th>สถานะ</th>
+                    <th>แก้ไข</th>
+                    <th>ลบ</th>
+                </tr>`;
 
             data.forEach(row => {
                 const tr = document.createElement('tr');
+                
+                // Conditionally show the "แก้ไข" button based on the value of StatusWorks
+                let editButton = '';
+                if (row.StatusWorks === 'รอพิจารณา') {
+                    editButton = `<button onclick="openPopup(${row.ID})">แก้ไข</button>`;
+                }
+
                 tr.innerHTML =
                     `<td>${row.ID}</td>
-                             <td>${row.FirstName}</td>
-                             <td>${row.LastName}</td>
-                             <td>${row.IPosition}</td>
-                             <td>${row.Phone}</td>
-                             <td>${row.IType}</td>
-                             <td>${row.Cause}</td>
-                             <td>${row.DateTimeStart}</td>
-                             <td>${row.DateTimeEnd}</td>
-                             <td>${row.StatusWorks}</td>
-                             <td>
-                                ${row.StatusWorks === 'ไม่อนุมัติ' || row.StatusWorks === 'อนุมัติ' 
-                                    ? '<button disabled>แก้ไข</button>' 
-                                    : `<button onclick="openPopup(${row.ID})">แก้ไข</button>`}
-                                <button style="background-color: red;" onclick="deleteRecord(${row.ID})">ลบ</button>
-                             </td>`;
+                    <td>${row.FirstName}</td>
+                    <td>${row.LastName}</td>
+                    <td>${row.IPosition}</td>
+                    <td>${row.Phone}</td>
+                    <td>${row.IType}</td>
+                    <td>${row.Cause}</td>
+                    <td>${row.DateTimeStart}</td>
+                    <td>${row.DateTimeEnd}</td>
+                    <td>${row.StatusWorks}</td>
+                    <td>${editButton}</td>
+                    <td><button style="background-color: red;" onclick="deleteRecord(${row.ID})">ลบ</button></td>`;
+
                 table.appendChild(tr);
             });
         })
         .catch(error => console.error('Error fetching data:', error));
 }
+
 
 // ฟังก์ชันใหม่เพื่อเปิด Popup
 function openPopup(id) {
