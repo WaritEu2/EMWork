@@ -1,4 +1,4 @@
 .env
-.ca.pem
-.package-lock.json
-.node_modules/
+ca.pem
+package-lock.json
+node_modules/
